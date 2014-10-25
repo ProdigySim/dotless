@@ -81,6 +81,10 @@
     <Compile Include="Parameters\IParameterSource.cs" />
     <Compile Include="Parser\Functions\ArgbFunction.cs" />
     <Compile Include="Parser\Functions\ColorFunction.cs" />
+    <Compile Include="Parser\Functions\UnitFunction.cs" />
+    <Compile Include="Parser\Functions\MinFunction.cs" />
+    <Compile Include="Parser\Functions\MaxFunction.cs" />
+    <Compile Include="Parser\Functions\ModFunction.cs" />
     <Compile Include="Parser\Functions\DataUriFunction.cs" />
     <Compile Include="Parser\Infrastructure\MimeTypeLookup.cs" />
     <Compile Include="Parser\Functions\NegationFunction.cs" />

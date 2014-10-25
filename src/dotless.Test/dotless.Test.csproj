@@ -92,8 +92,11 @@
     <Compile Include="Specs\ExtendFixture.cs" />
     <Compile Include="Specs\Functions\ArgbFixture.cs" />
     <Compile Include="Specs\Functions\BlendModesFixture.cs" />
+    <Compile Include="Specs\Functions\UnitFixture.cs" />
+    <Compile Include="Specs\Functions\MinMaxFixture.cs" />
     <Compile Include="Specs\Functions\DataUriFixture.cs" />
     <Compile Include="Specs\Functions\GradientImageFixture.cs" />
+    <Compile Include="Specs\Functions\ModFixture.cs" />
     <Compile Include="Specs\Functions\PowFixture.cs" />
     <Compile Include="Specs\LineNumbersFixture.cs" />
     <Compile Include="Specs\MediaFixture.cs" />
