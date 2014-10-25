@@ -6,20 +6,31 @@ namespace dotless.Core.Parser.Functions
     using Infrastructure.Nodes;
     using Tree;
     using Utils;
+    using dotless.Core.Exceptions;
 
     public class MaxFunction : Function
     {
         protected override Node Evaluate(Env env)
         {
-            Guard.ExpectMinArguments(2, Arguments.Count, this, Location);
-            Guard.ExpectMaxArguments(2, Arguments.Count, this, Location);
+            Guard.ExpectMinArguments(1, Arguments.Count, this, Location);
             Guard.ExpectAllNodes<Number>(Arguments, this, Location);
 
-            var first = Arguments.Cast<Number>().First();
-            var second = Arguments.Cast<Number>().ElementAt(1);
-            var value = Math.Max(first.Value, second.Value);
+            var numbers = Arguments.Cast<Number>();
+            var max = numbers.First();
 
-            return new Number(value);
+            foreach (var num in numbers.Skip(1))
+            {
+                if (num.Unit != max.Unit)
+                {
+                    throw new ParsingException(string.Format("Unit types of max function arguments don't match. {0} doesn't match unit {1}", num.ToCSS(env), max.Unit), num.Location);
+                }
+                if (num.Value > max.Value)
+                {
+                    max = num;
+                }
+            }
+
+            return max;
         }
     }
 }
