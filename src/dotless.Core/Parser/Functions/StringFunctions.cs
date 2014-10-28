@@ -28,6 +28,24 @@ namespace dotless.Core.Parser.Functions
         }
     }
 
+    public class EscapeFunction : Function
+    {
+        protected override Node Evaluate(Env env)
+        {
+            Guard.ExpectMaxArguments(1, Arguments.Count, this, Location);
+            Guard.ExpectNode<Quoted>(Arguments[0], this, Location);
+
+            if (Arguments.Count == 0)
+                return new TextNode("");
+
+            var str = (Quoted)Arguments[0];
+
+            string res = Uri.EscapeUriString(str.UnescapeContents()).Replace("=", "%3D")
+                .Replace(":", "%3A").Replace("#", "%23").Replace(";", "%3B").Replace("(", "%28").Replace(")", "%29");
+            return new TextNode(res);
+        }
+    }
+
     public class CFormatString : Function
     {
         protected override Node Evaluate(Env env)

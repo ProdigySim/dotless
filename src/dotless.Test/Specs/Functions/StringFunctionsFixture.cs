@@ -98,5 +98,13 @@ namespace dotless.Test.Specs.Functions
 
             AssertLess(input, expected);
         }
+
+        [Test]
+        public void TestEscapeFunction()
+        {
+            AssertExpression("a%3D1", "escape(\"a=1\")");
+
+            AssertExpression(",/?@&+'~!$%20%23%5E%28%29%7B%7D%7C%3A%3E%3C%3B%5D%5B%3D", "escape(\",/?@&+'~!$ #^(){}|:><;][=\")");
+        }
     }
 }
